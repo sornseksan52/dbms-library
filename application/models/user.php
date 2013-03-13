@@ -20,5 +20,24 @@ Class User extends CI_Model
      return false;
    }
  }
+
+ function Listbooks($username){
+   $this -> db -> select('bookname');
+   $this -> db -> from('user_borrowed');
+   $this -> db -> where('username', $username);
+   //$this -> db -> limit(1);
+
+   $query = $this -> db -> get();
+
+   if($query -> num_rows()>0)
+   {
+     return $query->result();
+   }
+   else
+   {
+     return false;
+   }
+
+ }
 }
 ?>

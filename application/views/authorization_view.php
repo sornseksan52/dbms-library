@@ -52,6 +52,7 @@
                   <li><a href="#">管理書籍</a></li>
                   <li><a href="#">借書</a></li>
                   <li><a href="#">還書</a></li>
+                  <li><a href="home/listBooks">個人書櫃</a></li>
                   <li><a href="#">預約紀錄</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">有關帳戶</li>
