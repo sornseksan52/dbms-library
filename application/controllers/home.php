@@ -27,6 +27,7 @@ class Home extends CI_Controller {
     function listBooks(){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
+        $data['username'] = $username;
         $data['bookname'] = $this->user->Listbooks($username);
         $this->load->view('books_view',$data);
     }
