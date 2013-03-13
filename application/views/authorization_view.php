@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Bootstrap, from Twitter</title>
@@ -43,12 +43,13 @@
           <a class="brand" href="#">資料庫系統實驗室</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="login">首頁</a></li>
+              <li class="active"><a href="#">首頁</a></li>
               <li><a href="#about">關於</a></li>
               <li><a href="#contact">聯絡我們</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                 <ul class="dropdown-menu">
+                  <li><a href="#">管理書籍</a></li>
                   <li><a href="#">借書</a></li>
                   <li><a href="#">還書</a></li>
                   <li><a href="#">預約紀錄</a></li>
@@ -58,15 +59,11 @@
                   <li><a href="#">修改密碼</a></li>
                 </ul>
               </li>
+            <li><a href="home/logout">Logout</a></li> 
             </ul>
-            <?php $attributes = array('class' => 'navbar-form pull-right');?>
-            <?php echo form_open('verifylogin',$attributes); ?>
-              <input id = "username" name = "username" class="span3" type="text" placeholder="Email">
-              <input id = "password" name = "password" class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">登入</button>
-            <span class = "text-error"><?php echo validation_errors(); ?></span>
           </div><!--/.nav-collapse -->
         </div>
+            <!--<div class = "text-success">Welcome <?php echo $username; ?>!<a href="home/logout">Logout</a> </div>-->
       </div>
     </div>
 

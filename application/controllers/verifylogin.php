@@ -52,7 +52,7 @@ class VerifyLogin extends CI_Controller {
    }
    else
    {
-     $this->form_validation->set_message('check_database', 'Invalid username or password');
+     $this->form_validation->set_message('check_database', '錯誤的使用者名稱或密碼');
      return false;
    }
  }
