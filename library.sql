@@ -24,51 +24,86 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/ `library` /*!40100 DEFAULT CHARACTER SE
 USE `library`;
 
 --
--- Table structure for table `persons`
+-- Table structure for table `books`
 --
 
-DROP TABLE IF EXISTS `persons`;
+DROP TABLE IF EXISTS `books`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `persons` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `name` char(60) NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `books` (
+  `bookname` varchar(100) NOT NULL,
+  `author` varchar(100) NOT NULL,
+  `number` varchar(60) NOT NULL,
+  `state` varchar(60) NOT NULL,
+  `reservation_number` smallint(6) NOT NULL,
+  `publish` year(4) NOT NULL,
+  PRIMARY KEY (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `persons`
+-- Dumping data for table `books`
 --
 
-LOCK TABLES `persons` WRITE;
-/*!40000 ALTER TABLE `persons` DISABLE KEYS */;
-/*!40000 ALTER TABLE `persons` ENABLE KEYS */;
+LOCK TABLES `books` WRITE;
+/*!40000 ALTER TABLE `books` DISABLE KEYS */;
+INSERT INTO `books` VALUES ('PHP for the Web','Larry Edward','505513','available',0,2011);
+/*!40000 ALTER TABLE `books` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `shirts`
+-- Table structure for table `user_borrowed`
 --
 
-DROP TABLE IF EXISTS `shirts`;
+DROP TABLE IF EXISTS `user_borrowed`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `shirts` (
-  `id` smallint(5) unsigned NOT NULL AUTO_INCREMENT,
-  `style` enum('t-shirt','polo','dress') NOT NULL,
-  `color` enum('red','blue','orange','white','black') NOT NULL,
-  `owner` smallint(5) unsigned NOT NULL,
-  PRIMARY KEY (`id`)
+CREATE TABLE `user_borrowed` (
+  `username` varchar(60) NOT NULL,
+  `bookname` varchar(100) NOT NULL,
+  `number` varchar(60) NOT NULL,
+  `borrowed_date` date NOT NULL,
+  `due_date` date NOT NULL,
+  PRIMARY KEY (`number`),
+  KEY `username` (`username`),
+  CONSTRAINT `user_borrowed_ibfk_1` FOREIGN KEY (`username`) REFERENCES `users` (`username`),
+  CONSTRAINT `user_borrowed_ibfk_2` FOREIGN KEY (`number`) REFERENCES `books` (`number`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shirts`
+-- Dumping data for table `user_borrowed`
 --
 
-LOCK TABLES `shirts` WRITE;
-/*!40000 ALTER TABLE `shirts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shirts` ENABLE KEYS */;
+LOCK TABLES `user_borrowed` WRITE;
+/*!40000 ALTER TABLE `user_borrowed` DISABLE KEYS */;
+INSERT INTO `user_borrowed` VALUES ('mht','PHP for the Web','505513','2011-09-05','2011-10-05');
+/*!40000 ALTER TABLE `user_borrowed` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `users`
+--
+
+DROP TABLE IF EXISTS `users`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `users` (
+  `username` varchar(60) NOT NULL,
+  `email_addr` varchar(60) NOT NULL,
+  `passwd` varchar(60) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE;
+/*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES ('mht','qrnnis2623891@gmail.com','784827b3f9a5e9a843aa0209c6802845');
+/*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -80,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-03-14 22:13:22
+-- Dump completed on 2013-03-21 17:43:09
