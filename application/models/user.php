@@ -1,12 +1,12 @@
 <?php
 Class User extends CI_Model
 {
- function login($username, $password)
+ function login($username, $passwd)
  {
-   $this -> db -> select('username, password');
+   $this -> db -> select('username, passwd');
    $this -> db -> from('users');
    $this -> db -> where('username', $username);
-   $this -> db -> where('password', MD5($password));
+   $this -> db -> where('passwd', MD5($passwd));
    $this -> db -> limit(1);
 
    $query = $this -> db -> get();
@@ -22,7 +22,7 @@ Class User extends CI_Model
  }
 
  function Listbooks($username){
-   $this -> db -> select('bookname');
+   $this -> db -> select('*');
    $this -> db -> from('user_borrowed');
    $this -> db -> where('username', $username);
    //$this -> db -> limit(1);

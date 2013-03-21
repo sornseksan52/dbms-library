@@ -6,6 +6,7 @@ class Home extends CI_Controller {
     {
         parent::__construct();
         //load model/user.php
+        $this->load->helper(array('form'));
         $this->load->model('user','',TRUE);
     }
 
@@ -24,13 +25,22 @@ class Home extends CI_Controller {
         }
     }
 
-    function listBooks(){
+    function Listbooks(){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
-        $data['bookname'] = $this->user->Listbooks($username);
+        $data['query'] = $this->user->Listbooks($username);
         $this->load->view('books_view',$data);
     }
+
+    function searchBooks(){
+        $session_data = $this->session->userdata('logged_in');
+        $username = $session_data['username'];
+        $data['username'] = $username;
+        $this->load->view('search_books',$data);
+
+    }
+
 
     function logout()
     {
