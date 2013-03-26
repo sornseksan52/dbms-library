@@ -52,7 +52,9 @@
                   <li><a href="#">管理書籍</a></li>
                   <li><a href="home/searchBooks">查詢書籍</a></li>
                   <li><a href="#">還書</a></li>
-                  <li><a href="home/Listbooks">個人書櫃</a></li>
+                  <li><a href="<?echo site_url('/home/listbooks')?>">個人書櫃</a></li>
+    <!--<a href="<?= site_url('/main/create'); ?>"> Create </a>-->
+                <!--<li><?= anchor('/home/listbooks', 'Create'); ?></li>-->
                   <li><a href="#">預約紀錄</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">有關帳戶</li>
