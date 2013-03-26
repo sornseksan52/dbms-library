@@ -52,7 +52,7 @@
                   <li><a href="#">管理書籍</a></li>
                   <li><a href="#">借書</a></li>
                   <li><a href="#">還書</a></li>
-                  <li><a href="home/listBooks">個人書櫃</a></li>
+                                <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                   <li><a href="#">預約紀錄</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">有關帳戶</li>
@@ -60,7 +60,7 @@
                   <li><a href="#">修改密碼</a></li>
                 </ul>
               </li>
-            <li><a href="home/logout">Logout</a></li> 
+                            <li><a href="home/logout">Logout</a></li> 
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -82,25 +82,8 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src='<?=base_url().'bootstrap/assets/js/jquery.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-transition.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-alert.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-modal.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-dropdown.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-scrollspy.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-tab.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-tooltip.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-popover.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-button.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-collapse.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-carousel.js'?>'></script>
-    <script src='<?=base_url().'bootstrap/assets/js/bootstrap-typeahead.js'?>'></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src='<?=base_url().'bootstrap/js/bootstrap.js'?>'></script>
 
   </body>
 </html>
-<!DOCTYPE html>
-<head>
-    <link href='<?=base_url().'bootstrap/css/bootstrap.css'?>' type="text/css" rel = "stylesheet"></link> 
-</head>
-<body>
-</body>
