@@ -41,13 +41,11 @@ class Home extends CI_Controller {
     }
 
     function queryResult(){
-        //$criteria = $this->input->post('criteria');
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
-        $criteria = 'bookname';
-        $query = $this->input->post('search');
-        $data['query'] = $this->user->queryBooks($criteria,$query);
+        $post = $this->input->post();
+        $data['query'] = $this->user->queryBooks($post['criteria'],$post['search']);
         $this->load->view('query_books',$data);
 
     }
