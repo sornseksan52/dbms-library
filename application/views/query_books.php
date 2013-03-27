@@ -27,8 +27,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
       <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
                     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="assets/ico/favicon.png">
-  </head>
 
   <body>
 
@@ -60,7 +58,7 @@
                   <li><a href="#">修改密碼</a></li>
                 </ul>
               </li>
-                            <li><a href="home/logout">Logout</a></li> 
+                            <li><a href="/home/logout">Logout</a></li> 
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -78,6 +76,32 @@
     </select>
     <input name = "search" type="text" class="search-query" placeholder="Search">
     <button type="submit" class="btn">搜尋</button>
+
+    <caption><h1 align = "center">Welcome <?php echo $username; ?>!<br/>
+            搜尋結果如下:)</h1></caption>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>是否借閱</th>
+            <th>書刊名</th>
+            <th>作者名稱</th>
+            <th>狀態</th>
+            <th>預約人數</th>
+            <th>出版年份</th>
+        </tr>
+
+        <?php
+        foreach($query as $row){
+        echo '<tr>';
+        echo '<td><input type="checkbox" name=borrow_books[] value ='. $row->bookname .'</td>';
+        echo '<td>'.$row->bookname.'</td>';
+        echo '<td>'.$row->author.'</td>';
+        echo '<td>'.$row->state.'</td>';
+        echo '<td>'.$row->reservation_number.'</td>';
+        echo '<td>'.$row->publish.'</td>';
+        echo '</tr>';
+        }
+        ?>
+    </table>
 
     <!-- Le javascript
     ================================================== -->

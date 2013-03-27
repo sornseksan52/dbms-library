@@ -38,8 +38,20 @@ class Home extends CI_Controller {
         $username = $session_data['username'];
         $data['username'] = $username;
         $this->load->view('search_books',$data);
+    }
+
+    function queryResult(){
+        //$criteria = $this->input->post('criteria');
+        $session_data = $this->session->userdata('logged_in');
+        $username = $session_data['username'];
+        $data['username'] = $username;
+        $criteria = 'bookname';
+        $query = $this->input->post('search');
+        $data['query'] = $this->user->queryBooks($criteria,$query);
+        $this->load->view('query_books',$data);
 
     }
+
 
 
     function logout()

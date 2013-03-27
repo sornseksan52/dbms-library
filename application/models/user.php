@@ -39,5 +39,23 @@ Class User extends CI_Model
    }
 
  }
+
+ function queryBooks($criteria,$query_string){
+    $this->db->select('*');
+    $this->db->from('books');
+    $where = $criteria . ' like "%' . $query_string . '%"';
+    $this->db->where($where);
+    $query = $this -> db -> get();
+    if($query -> num_rows()>0)
+    {
+     return $query->result();
+    }
+    else
+    {
+     return false;
+    }
+
+
+ }
 }
 ?>
