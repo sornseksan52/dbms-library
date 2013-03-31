@@ -61,20 +61,20 @@ Class User extends CI_Model
                 //insert a new record into user_borrowed
                 $this->db->select('bookname');
                 $this->db->from('books');
-                $this->db->where('number',$booknumber);
+                $this->db->where('number',$number);
                 $this->db->limit(1);
                 $bookname = $this->db->get()->result();
                 $record = array(
                     'username'=> $username,
                     'bookname'=> $bookname[0]->bookname,
-                    'number'=> $booknumber
+                    'number'=> $number
                 );
                 $this->db->insert('user_borrowed',$record);
                 //update books state
                 $data = array(
                     'state' => 'unavailable'
                 );
-                $this->db->where('number',$booknumber);
+                $this->db->where('number',$number);
                 $this->db->update('books',$data);
             }else{
                 $callbooks[$number] = $nonavailable[$number];
@@ -84,6 +84,13 @@ Class User extends CI_Model
 
     }
 
+    function returnBooks($booknumbers){
+        foreach($booknumbers as $number){
+            $this->db->delete('user_borrowed',array('number' =>$number));
+            $data = array('state' => 'available');
+            $this->db->update('books',$data,array('number' =>$number));
+        }
+    }
     function queryBooks($criteria,$query_string){
         $this->db->select('*');
         $this->db->from('books');

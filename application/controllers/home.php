@@ -41,6 +41,16 @@ class Home extends CI_Controller {
         $this->load->view('search_books',$data);
     }
 
+    function returnBooks(){
+        $session_data = $this->session->userdata('logged_in');
+        $username = $session_data['username'];
+        $data['username'] = $username;
+        $booknumbers = $this->input->post('borrow_books');
+        $this->user->returnBooks($booknumbers);
+        $this->Listbooks();
+
+    }
+
     function queryResult(){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
@@ -56,8 +66,7 @@ class Home extends CI_Controller {
         $username = $session_data['username'];
         $data['username'] = $username;
         $booknumbers = $this->input->post('borrow_books');
-        $data['booknumbers'] = $booknumbers;
-        $data['result'] = $this->user->borrowBooks($username,$booknumbers);
+        $this->user->borrowBooks($username,$booknumbers);
         //$this->load->view('test',$data);
         $this->searchBooks();
     }

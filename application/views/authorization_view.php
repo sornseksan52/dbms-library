@@ -50,8 +50,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">管理書籍</a></li>
-                                <li><a href="home/searchBooks">查詢書籍</a></li>
-                                <li><a href="#">還書</a></li>
+                                <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                                 <li><a href="#">預約紀錄</a></li>
                                 <li class="divider"></li>

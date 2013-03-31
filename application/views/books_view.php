@@ -50,8 +50,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#">管理書籍</a></li>
-                                <li><a href="#">借書</a></li>
-                                <li><a href="#">還書</a></li>
+                                <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                                 <li><a href="#">預約紀錄</a></li>
                                 <li class="divider"></li>
@@ -67,23 +66,30 @@
             </div>
         </div>
 
+        <?php echo form_open('/home/returnBooks'); ?>
         <caption><h1 align = "center">Welcome <?php echo $username; ?>!<br/>
                 您目前所借閱的書籍如下:)</h1></caption>
         <table class="table table-striped table-bordered table-hover">
             <tr>
+                <th>還書</th>
                 <th>書刊名</th>
                 <th>系統書號</th>
                 <th>作者名稱</th>
             </tr>
 
             <?php
-            foreach($query as $row){
-            echo '<tr><td>'.$row->bookname.'</td>';
-            echo '<td>'.$row->number.'</td>';
-            echo '<td>'.$row->author.'</td></tr>';
+            if($query){
+                foreach($query as $row){
+                echo '<tr><td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
+                echo '<td>'.$row->bookname.'</td>';
+                echo '<td>'.$row->number.'</td>';
+                echo '<td>'.$row->author.'</td></tr>';
+                }
             }
             ?>
         </table>
+        <button type="submit" class="btn">確定還書</button>
+        </form>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src='<?=base_url().'bootstrap/js/bootstrap.js'?>'></script>
