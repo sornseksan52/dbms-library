@@ -85,7 +85,6 @@
             <th>書刊名</th>
             <th>作者名稱</th>
             <th>狀態</th>
-            <th>預約人數</th>
             <th>出版年份</th>
         </tr>
 
@@ -96,7 +95,6 @@
         echo '<td>'.$row->bookname.'</td>';
         echo '<td>'.$row->author.'</td>';
         echo '<td>'.$row->state.'</td>';
-        echo '<td>'.$row->reservation_number.'</td>';
         echo '<td>'.$row->publish.'</td>';
         echo '</tr>';
         }

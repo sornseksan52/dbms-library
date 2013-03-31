@@ -60,7 +60,7 @@
                   <li><a href="#">修改密碼</a></li>
                 </ul>
               </li>
-                            <li><a href="home/logout">Logout</a></li> 
+                            <li><a href="/home/logout">Logout</a></li> 
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -69,8 +69,7 @@
 
     <p class = "lead">Welcome <?php echo $username; ?>!<br/>
 歡迎借書:)</p>
-    <?php $attributes = array('class' => 'navbar-search pull-left');?>
-    <?php echo form_open('/home/queryResult',$attributes); ?>
+    <?php echo form_open('/home/queryResult'); ?>
     <select size ="1" name="criteria">
         <option value='bookname'>書刊名</option>
         <option value='author'>作者名稱</option>
@@ -78,6 +77,33 @@
     </select>
     <input name = "search" type="text" class="search-query" placeholder="Search">
     <button type="submit" class="btn">搜尋</button>
+    </form>
+
+
+    <?php echo form_open('/home/borrowBooks'); ?>
+    <table class="table table-striped table-bordered table-hover">
+        <tr>
+            <th>是否借閱</th>
+            <th>書刊名</th>
+            <th>作者名稱</th>
+            <th>狀態</th>
+            <th>出版年份</th>
+        </tr>
+
+        <?php
+        foreach($query as $row){
+        echo '<tr>';
+        echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
+        echo '<td>'.$row->bookname.'</td>';
+        echo '<td>'.$row->author.'</td>';
+        echo '<td>'.$row->state.'</td>';
+        echo '<td>'.$row->publish.'</td>';
+        echo '</tr>';
+        }
+        ?>
+    </table>
+    <button type="submit" class="btn">確定借閱</button>
+    </form>
 
     <!-- Le javascript
     ================================================== -->

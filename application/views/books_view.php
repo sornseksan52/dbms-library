@@ -72,15 +72,15 @@
         <table class="table table-striped table-bordered table-hover">
             <tr>
                 <th>書刊名</th>
-                <th>借閱日期</th>
-                <th>應還日期</th>
+                <th>系統書號</th>
+                <th>作者名稱</th>
             </tr>
 
             <?php
             foreach($query as $row){
-            echo '<td>'.$row->bookname.'</td>';
-            echo '<td>'.$row->borrowed_date.'</td>';
-            echo '<td>'.$row->due_date.'</td>';
+            echo '<tr><td>'.$row->bookname.'</td>';
+            echo '<td>'.$row->number.'</td>';
+            echo '<td>'.$row->author.'</td></tr>';
             }
             ?>
         </table>
