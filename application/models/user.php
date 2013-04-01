@@ -21,6 +21,34 @@ Class User extends CI_Model
         }
     }
 
+    function register($username){
+        $this -> db -> select('username');
+        $this -> db -> from('users');
+        $this -> db -> where('username', $username);
+        $this -> db -> limit(1);
+
+        $query = $this -> db -> get();
+
+        if($query -> num_rows()>0)
+        {
+            return $query->result();
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+    function adduser($username,$password,$email){
+        $data = array(
+            'username' => $username,
+            'passwd' => md5($password),
+            'email_addr' => $email
+        );
+        $this->db->insert('users',$data);
+    }
+
     function Listbooks($username){
         $this -> db -> select('*');
         $this -> db -> from('user_borrowed');

@@ -17,17 +17,6 @@
         </style>
         <link href='<?=base_url().'bootstrap/assets/css/bootstrap-reponsive.css'?>' type="text/css" rel = "stylesheet"></link>
 
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-        <script src="assets/js/html5shiv.js"></script>
-        <![endif]-->
-
-        <!-- Fav and touch icons -->
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
-        <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
-        <link rel="shortcut icon" href="assets/ico/favicon.png">
     </head>
 
     <body>
@@ -43,13 +32,17 @@
                     <a class="brand" href="#">資料庫系統實驗室</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">首頁</a></li>
-                            <li><a href="#about">關於</a></li>
+                            <li><?= anchor('/login/register', '註冊'); ?></li>
                             <li><a href="#contact">聯絡我們</a></li>
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">管理書籍</a></li>
+                            <?php if($username == 'mht'){
+                            echo '<li>';
+                             echo anchor('/home/manageBooks', '管理書籍');
+                            echo '</li>'; 
+                                }
+                            ?>
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                                 <li><a href="#">預約紀錄</a></li>
