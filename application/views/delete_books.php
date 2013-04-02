@@ -68,9 +68,7 @@
       </div>
     </div>
 
-    <p class = "lead">Welcome <?php echo $username; ?>!<br/>
-歡迎借書:)</p>
-    <?php echo form_open('/home/queryResult'); ?>
+    <?php echo form_open('/home/queryResult/delete'); ?>
     <select size ="1" name="criteria">
         <option value='bookname'>書刊名</option>
         <option value='author'>作者名稱</option>
@@ -81,29 +79,32 @@
     </form>
 
 
-    <?php echo form_open('/home/borrowBooks'); ?>
-    <table class="table table-striped table-bordered table-hover">
-        <tr>
-            <th>是否借閱</th>
-            <th>書刊名</th>
-            <th>作者名稱</th>
-            <th>狀態</th>
-            <th>出版年份</th>
-        </tr>
+    <?php echo form_open('/manager/deleteBooks'); ?>
+    <fieldset>
+        <legend>刪除書籍</legend>
+        <table class="table table-striped table-bordered table-hover">
+            <tr>
+                <th>是否刪除</th>
+                <th>書刊名</th>
+                <th>作者名稱</th>
+                <th>狀態</th>
+                <th>出版年份</th>
+            </tr>
 
-        <?php
-        foreach($query as $row){
-        echo '<tr>';
-        echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
-        echo '<td>'.$row->bookname.'</td>';
-        echo '<td>'.$row->author.'</td>';
-        echo '<td>'.$row->state.'</td>';
-        echo '<td>'.$row->publish.'</td>';
-        echo '</tr>';
-        }
-        ?>
+<?php
+            foreach($query as $row){
+                echo '<tr>';
+                echo '<td><input type="checkbox" name=delete_books[] value ='. "'$row->number'" .'/></td>';
+                echo '<td>'.$row->bookname.'</td>';
+                echo '<td>'.$row->author.'</td>';
+                echo '<td>'.$row->state.'</td>';
+                echo '<td>'.$row->publish.'</td>';
+                echo '</tr>';
+            }
+?>
     </table>
-    <button type="submit" class="btn">確定借閱</button>
+    <button type="submit" class="btn btn-primary">確定刪除</button>
+    </fieldset>
     </form>
 
     <!-- Le javascript
@@ -114,3 +115,4 @@
 
   </body>
 </html>
+

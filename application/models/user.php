@@ -100,7 +100,7 @@ Class User extends CI_Model
                 $this->db->insert('user_borrowed',$record);
                 //update books state
                 $data = array(
-                    'state' => 'unavailable'
+                    'state' => '借出中'
                 );
                 $this->db->where('number',$number);
                 $this->db->update('books',$data);
@@ -115,7 +115,7 @@ Class User extends CI_Model
     function returnBooks($booknumbers){
         foreach($booknumbers as $number){
             $this->db->delete('user_borrowed',array('number' =>$number));
-            $data = array('state' => 'available');
+            $data = array('state' => '在架上');
             $this->db->update('books',$data,array('number' =>$number));
         }
     }
@@ -136,6 +136,30 @@ Class User extends CI_Model
             return false;
         }
 
+
+    }
+
+    function addBooks($data){
+        $this->db->select('max(number) as number');
+        $this->db->from('books');
+        $row = $this->db->get()->result();
+        $data['number'] = (int)$row[0]->number+1;
+        $record = array(
+            'bookname' =>$data['bookname'],
+            'author' => $data['author'],
+            'number' => $data['number'],
+            'publish' => $data['publish'],
+            'class' => $data['class']
+        );
+        $this->db->insert('books',$record);
+    }
+
+    function deleteBooks($data){
+        $delete_books = $data['delete_books'];
+        foreach($delete_books as $number){
+            $this->db->where('number',$number);
+            $this->db->delete('books');
+        }
 
     }
 }

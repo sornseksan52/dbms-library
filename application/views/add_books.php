@@ -37,12 +37,6 @@
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                            <?php if($username == 'mht'){
-                            echo '<li>';
-                             echo anchor('/home/manageBooks', '管理書籍');
-                            echo '</li>'; 
-                                }
-                            ?>
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                                 <li><a href="#">預約紀錄</a></li>
@@ -75,13 +69,23 @@
             </div>
         </div>
 
-        <hr>
-
-        <footer>
-        <p>&copy; Company 2013</p>
-        </footer>
 
     </div> <!-- /container -->
+    <?php echo form_open('/manager/addBooks',array('class' => 'span3')); ?>
+      <fieldset>
+        <legend>新增書籍</legend>
+        <label>書籍名稱</label>
+        <input name = 'bookname' type="text" placeholder="書籍名稱">
+        <label>作者名稱</label>
+        <input name = 'author' type="text" placeholder="作者名稱">
+        <label>出版年份</label>
+        <input name = 'publish' type="text" placeholder="出版年份">
+        <label>類別</label>
+        <input name = 'class' type="text" placeholder="類別">
+<br/>
+        <button type="submit" class="btn btn-primary">確定新增</button>
+          </fieldset>
+        </form>
 
     <!-- Le javascript
     ================================================== -->

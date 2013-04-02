@@ -51,13 +51,17 @@ class Home extends CI_Controller {
 
     }
 
-    function queryResult(){
+    function queryResult($delete){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
         $post = $this->input->post();
         $data['query'] = $this->user->queryBooks($post['criteria'],$post['search']);
-        $this->load->view('search_books',$data);
+        if($delete = 'delete'){
+            $this->load->view('delete_books',$data);
+        }else{
+            $this->load->view('search_books',$data);
+        }
 
     }
 
@@ -69,6 +73,22 @@ class Home extends CI_Controller {
         $this->user->borrowBooks($username,$booknumbers);
         //$this->load->view('test',$data);
         $this->searchBooks();
+    }
+
+    function manager($action){
+        $session_data = $this->session->userdata('logged_in');
+        $username = $session_data['username'];
+        $data['username'] = $username;
+        if($action == 'add'){
+            $this->load->view('add_books',$data);
+        }
+        elseif($action == 'update'){
+            $data['query'] = $this->user->queryBooks('','');
+            $this->load->view('update_books',$data);
+        }elseif($action == 'delete'){
+            $data['query'] = $this->user->queryBooks('','');
+            $this->load->view('delete_books',$data);
+        }
     }
 
 
