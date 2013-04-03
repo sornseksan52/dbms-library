@@ -71,6 +71,7 @@ Class User extends CI_Model
 
     function borrowBooks($username,$booknumbers){
         $user_borrow = array();
+        $this->load->library('email');
         $this->db->select('user_borrowed.username,bookname,number,users.email_addr');
         $this->db->from('user_borrowed,users');
         $this->db->where('user_borrowed.username = users.username');
@@ -106,10 +107,20 @@ Class User extends CI_Model
                 $this->db->update('books',$data);
             }else{
                 $callbooks[$number] = $nonavailable[$number];
+                $this->sendEmail($number,$callbooks[$number]);
             }
 
         }
 
+    }
+
+    function sendEmail($number,$email){
+        $manager=mb_encode_mimeheader('資料庫系統圖書館管理員', 'UTF-8');
+        $this->email->from('qrnnis2623891@gmail.com',$manager);
+        $this->email->to($email);
+        $this->email->subject('dbms library message');
+        $this->email->message("請歸還書號$number");
+        $this->email->send();
     }
 
     function returnBooks($booknumbers){
