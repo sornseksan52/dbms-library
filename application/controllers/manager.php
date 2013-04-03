@@ -22,6 +22,10 @@ class Manager extends CI_Controller {
         $data = $this->input->post();
         $this->user->deleteBooks($data);
     }
+    function updateBooks(){
+        $data = $this->input->post();
+        $this->user->updateBooks($data);
+    }
 
 
 }

@@ -57,9 +57,13 @@ class Home extends CI_Controller {
         $data['username'] = $username;
         $post = $this->input->post();
         $data['query'] = $this->user->queryBooks($post['criteria'],$post['search']);
-        if($delete = 'delete'){
+        if($delete ==  'delete'){
             $this->load->view('delete_books',$data);
-        }else{
+        }
+        elseif($delete == 'update'){
+            $this->load->view('update_books',$data);
+        }
+        else{
             $this->load->view('search_books',$data);
         }
 

@@ -162,5 +162,20 @@ Class User extends CI_Model
         }
 
     }
+    function updateBooks($data){
+        $number = $data['update_book'];
+        $bookname = $data['bookname'];
+        $author = $data['author'];
+        $publish = $data['publish'];
+        $class = $data['class'];
+        $record = array();
+        if($bookname != ''){ $record['bookname'] = $bookname; }
+        if($author != ''){ $record['author'] = $bookname; }
+        if($author != ''){ $record['publish'] = $publish; }
+        if($author != ''){ $record['class'] = $class; }
+        $this->db->where('number',$number);
+        $this->db->update('books',$record);
+
+    }
 }
 ?>
