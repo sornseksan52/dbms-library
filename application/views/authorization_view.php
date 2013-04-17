@@ -37,15 +37,8 @@
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                            <?php if($username == 'mht'){
-                            echo '<li>';
-                             echo anchor('/home/manageBooks', '管理書籍');
-                            echo '</li>'; 
-                                }
-                            ?>
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
-                                <li><a href="#">預約紀錄</a></li>
                                 <li class="divider"></li>
                                 <li class="nav-header">有關帳戶</li>
                                 <li><a href="#">移除帳戶</a></li>

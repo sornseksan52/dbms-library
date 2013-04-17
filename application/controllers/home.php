@@ -51,7 +51,7 @@ class Home extends CI_Controller {
 
     }
 
-    function queryResult($delete){
+    function queryResult($delete = "default"){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;

@@ -44,7 +44,6 @@
                     <div class="nav-collapse collapse">
                         <ul class="nav">
                             <li class="active"><a href="#">首頁</a></li>
-                            <li><a href="#about">關於</a></li>
                             <li><a href="#contact">聯絡我們</a></li>
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
@@ -52,13 +51,27 @@
                                 <li><a href="#">管理書籍</a></li>
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
-                                <li><a href="#">預約紀錄</a></li>
                                 <li class="divider"></li>
                                 <li class="nav-header">有關帳戶</li>
                                 <li><a href="#">移除帳戶</a></li>
                                 <li><a href="#">修改密碼</a></li>
                             </ul>
                             </li>
+                        <?php if($username == 'mht'){
+                         echo '<li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理書籍<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                            <li>
+                            </li>';
+                            echo '<li>';
+                         echo anchor('/home/manager/add', '新增書籍');
+                         echo '</li><li>';
+                         echo anchor('/home/manager/update', '更新書籍');
+                         echo '</li><li>';
+                         echo anchor('/home/manager/delete', '刪除書籍');
+                         echo '</li></ul>';
+                                }
+                            ?>
                             <li><?= anchor('/home/Logout', 'Logout'); ?></li>
                         </ul>
                     </div><!--/.nav-collapse -->

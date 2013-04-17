@@ -33,7 +33,6 @@
           <div class="nav-collapse collapse">
             <ul class="nav">
             <li><?= anchor('/login/register', '註冊'); ?></li>
-              <li><a href="#contact">聯絡我們</a></li>
             </ul>
             <?php $attributes = array('class' => 'navbar-form pull-right');?>
             <?php echo form_open('verifylogin',$attributes); ?>
