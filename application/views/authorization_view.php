@@ -32,17 +32,12 @@
                     <a class="brand" href="#">資料庫系統實驗室</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li><?= anchor('/login/register', '註冊'); ?></li>
                             <li><a href="#contact">聯絡我們</a></li>
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">有關帳戶</li>
-                                <li><a href="#">移除帳戶</a></li>
-                                <li><a href="#">修改密碼</a></li>
                             </ul>
                             </li>
 

@@ -71,7 +71,6 @@ Class User extends CI_Model
 
     function borrowBooks($username,$booknumbers){
         $user_borrow = array();
-        $this->load->library('email');
         $this->db->select('user_borrowed.username,bookname,number,users.email_addr');
         $this->db->from('user_borrowed,users');
         $this->db->where('user_borrowed.username = users.username');
@@ -114,12 +113,16 @@ Class User extends CI_Model
 
     }
 
-    function sendEmail($number,$email){
+    function sendEmail($number,$email,$information = ""){
+        $this->load->library('email');
         $manager=mb_encode_mimeheader('資料庫系統圖書館管理員', 'UTF-8');
         $this->email->from('qrnnis2623891@gmail.com',$manager);
         $this->email->to($email);
         $this->email->subject('dbms library message');
-        $this->email->message("請歸還書號$number");
+        if($information == ""){
+            $information = "請歸還書號 $number";
+        }
+        $this->email->message($information);
         $this->email->send();
     }
 
@@ -160,9 +163,20 @@ Class User extends CI_Model
             'author' => $data['author'],
             'number' => $data['number'],
             'publish' => $data['publish'],
+            'state' => '在架上',
             'class' => $data['class']
         );
+        //send email to all users
         $this->db->insert('books',$record);
+
+        $this->db->select('email_addr');
+        $this->db->from('users');
+        $query = $this->db->get();
+        $result = $query->result();
+        $information = "新書來了！！名稱是\"$data[bookname]\"，系統書號為$data[number]";
+        foreach($result as $row){
+            $this->sendEmail($data['number'],$row->email_addr,$information);
+        }
     }
 
     function deleteBooks($data){
