@@ -103,7 +103,7 @@
             }
 ?>
     </table>
-    <button type="submit" class="btn btn-primary">確定刪除</button>
+    <button type="submit" class="btn btn-danger">確定刪除</button>
     </fieldset>
     </form>
 

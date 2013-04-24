@@ -112,7 +112,7 @@
     <label>類別</label>
     <input name = 'class' type="text" placeholder="類別">
 <br/>
-    <button type="submit" class="btn btn-primary">確定更新</button>
+    <button type="submit" class="btn btn-warning">確定更新</button>
     </fieldset>
     </form>
 

@@ -39,7 +39,6 @@
                 <ul class="dropdown-menu">
                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
-                  <li><a href="#">預約紀錄</a></li>
                   <li class="divider"></li>
                   <li class="nav-header">有關帳戶</li>
                   <li><a href="#">移除帳戶</a></li>
@@ -103,7 +102,7 @@
         }
         ?>
     </table>
-    <button type="submit" class="btn">確定借閱</button>
+    <button type="submit" class="btn btn-inverse">確定借閱</button>
     </form>
 
     <!-- Le javascript

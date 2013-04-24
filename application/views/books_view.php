@@ -43,12 +43,10 @@
                     <a class="brand" href="#">資料庫系統實驗室</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav">
-                            <li class="active"><a href="#">首頁</a></li>
                             <li><a href="#contact">聯絡我們</a></li>
                             <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">管理書籍</a></li>
                                 <li><?= anchor('/home/searchBooks', '查詢書籍'); ?></li>
                                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                                 <li class="divider"></li>
@@ -101,7 +99,7 @@
             }
             ?>
         </table>
-        <button type="submit" class="btn">確定還書</button>
+        <button type="submit" class="btn btn-success">確定還書</button>
         </form>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>

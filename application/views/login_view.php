@@ -38,7 +38,7 @@
             <?php echo form_open('verifylogin',$attributes); ?>
               <input id = "username" name = "username" class="span3" type="text" placeholder="Username">
               <input id = "password" name = "password" class="span2" type="password" placeholder="Password">
-              <button type="submit" class="btn">登入</button>
+              <button type="submit" class="btn btn-primary">登入</button>
             <span class = "text-error"><?php echo validation_errors(); ?></span>
           </div><!--/.nav-collapse -->
         </div>
