@@ -116,7 +116,18 @@ class Home extends CI_Controller {
         }
     }
 
+    function leaveMessage($action = 'show'){
+        $session_data = $this->session->userdata('logged_in');
+        $username = $session_data['username'];
+        $data['username'] = $username;
+        if($action == 'message'){
+            $content = $this->input->post('message');
+            $this->user->leaveMessage($username,$content);
+        }
+        $data['messages'] = $this->user->listMessage();
+        $this->load->view('guestbooks',$data);
 
+    }
 
     function logout()
     {

@@ -69,6 +69,22 @@ Class User extends CI_Model
 
     }
 
+    function leaveMessage($username,$content){
+        $date = date('y-m-d-G-i-s');
+        $record = array(
+            'name'=> $username,
+            'message_date'=> $date,
+            'content'=> $content
+        );
+        $this->db->insert('guestbooks',$record);
+    }
+    function listMessage(){
+        $this->db->select('*');
+        $this->db->from('guestbooks');
+        $query = $this->db->get();
+        $result = $query->result();
+        return $result;
+    }
     function borrowBooks($username,$booknumbers){
         $user_borrow = array();
         $this->db->select('user_borrowed.username,bookname,number,users.email_addr');

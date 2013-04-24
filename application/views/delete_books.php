@@ -32,7 +32,7 @@
           <a class="brand" href="#">資料庫系統實驗室</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li><a href="#contact">聯絡我們</a></li>
+            <li><?= anchor('/home/leaveMessage', '留言板'); ?></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">服務<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -86,14 +86,16 @@
             </tr>
 
 <?php
-            foreach($query as $row){
-                echo '<tr>';
-                echo '<td><input type="checkbox" name=delete_books[] value ='. "'$row->number'" .'/></td>';
-                echo '<td>'.$row->bookname.'</td>';
-                echo '<td>'.$row->author.'</td>';
-                echo '<td>'.$row->state.'</td>';
-                echo '<td>'.$row->publish.'</td>';
-                echo '</tr>';
+            if(is_array($query)){
+                foreach($query as $row){
+                    echo '<tr>';
+                    echo '<td><input type="checkbox" name=delete_books[] value ='. "'$row->number'" .'/></td>';
+                    echo '<td>'.$row->bookname.'</td>';
+                    echo '<td>'.$row->author.'</td>';
+                    echo '<td>'.$row->state.'</td>';
+                    echo '<td>'.$row->publish.'</td>';
+                    echo '</tr>';
+                }
             }
 ?>
     </table>
