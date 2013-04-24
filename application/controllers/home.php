@@ -75,7 +75,17 @@ class Home extends CI_Controller {
         }
         else{
             //$this->load->view('search_books',$data);
-            $this->searchBooks();
+            $borrowed_result = $this->user->Listbooks($username);
+            $i = 0;
+            $borrowed_number = array();
+            if(is_array($borrowed_result)){
+                foreach($borrowed_result as $row){
+                    $borrowed_number[$i] = $row->number;
+                    $i++;
+                }
+            }
+            $data['borrowed'] = $borrowed_number;
+            $this->load->view('search_books',$data);
         }
 
     }
