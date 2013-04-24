@@ -120,9 +120,13 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $update = False;
         if($action == 'message'){
             $content = $this->input->post('message');
-            $this->user->leaveMessage($username,$content);
+            if(trim($content," \t\n") != ""){
+                $this->user->leaveMessage($username,$content);
+                $update = True;
+            }
         }
         $data['messages'] = $this->user->listMessage();
         $this->load->view('guestbooks',$data);
