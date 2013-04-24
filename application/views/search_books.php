@@ -69,6 +69,7 @@
         <option value='bookname'>書刊名</option>
         <option value='author'>作者名稱</option>
         <option value='publish'>出版年份</option>
+        <option value='class'>類別</option>
     </select>
     <input name = "search" type="text" class="search-query" placeholder="Search">
     <button type="submit" class="btn">搜尋</button>
@@ -83,16 +84,18 @@
             <th>作者名稱</th>
             <th>狀態</th>
             <th>出版年份</th>
+            <th>類別</th>
         </tr>
 
         <?php
         foreach($query as $row){
-        echo '<tr>';
+        echo '<tr class = "warning">';
         echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
         echo '<td>'.$row->bookname.'</td>';
         echo '<td>'.$row->author.'</td>';
         echo '<td>'.$row->state.'</td>';
         echo '<td>'.$row->publish.'</td>';
+        echo '<td>'.$row->class.'</td>';
         echo '</tr>';
         }
         ?>
