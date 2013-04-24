@@ -14,6 +14,9 @@
         padding-top: 60px;
         padding-bottom: 40px;
       }
+      table {
+        empty-cells:show;
+      }
     </style>
     <link href='<?=base_url().'bootstrap/assets/css/bootstrap-reponsive.css'?>' type="text/css" rel = "stylesheet"></link>
 
@@ -67,6 +70,7 @@
     <?php echo form_open('/home/queryResult'); ?>
     <select size ="1" name="criteria">
         <option value='bookname'>書刊名</option>
+        <option value='number'>系統書號</option>
         <option value='author'>作者名稱</option>
         <option value='publish'>出版年份</option>
         <option value='class'>類別</option>
@@ -81,6 +85,7 @@
         <tr>
             <th>是否借閱</th>
             <th>書刊名</th>
+            <th>系統書號</th>
             <th>作者名稱</th>
             <th>狀態</th>
             <th>出版年份</th>
@@ -89,9 +94,15 @@
 
         <?php
         foreach($query as $row){
-        echo '<tr class = "warning">';
-        echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
+        if(!in_array($row->number,$borrowed)){
+            echo '<tr class = "warning">';
+            echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
+        }else{
+            echo '<tr class = "success">';
+            echo '<td>已借閱</td>';
+        }
         echo '<td>'.$row->bookname.'</td>';
+        echo '<td>'.$row->number.'</td>';
         echo '<td>'.$row->author.'</td>';
         echo '<td>'.$row->state.'</td>';
         echo '<td>'.$row->publish.'</td>';

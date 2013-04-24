@@ -38,6 +38,16 @@ class Home extends CI_Controller {
         $username = $session_data['username'];
         $data['username'] = $username;
         $data['query'] = $this->user->queryBooks('','');
+        $borrowed_result = $this->user->Listbooks($username);
+        $i = 0;
+        $borrowed_number = array();
+        if(is_array($borrowed_result)){
+            foreach($borrowed_result as $row){
+                $borrowed_number[$i] = $row->number;
+                $i++;
+            }
+        }
+        $data['borrowed'] = $borrowed_number;
         $this->load->view('search_books',$data);
     }
 
@@ -64,7 +74,8 @@ class Home extends CI_Controller {
             $this->load->view('update_books',$data);
         }
         else{
-            $this->load->view('search_books',$data);
+            //$this->load->view('search_books',$data);
+            $this->searchBooks();
         }
 
     }
