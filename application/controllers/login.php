@@ -12,7 +12,14 @@ class Login extends CI_Controller {
 
     function index()
     {
-        $this->load->view('login_view');
+        if($this->session->userdata('logged_in')){
+            $session_data = $this->session->userdata('logged_in');
+            $data['username'] = $session_data['username'];
+            $this->load->view('authorization_view', $data);
+        }else{
+            $this->load->view('login_view');
+            //redirect('login', 'refresh');
+        }
     }
     function register()
     {

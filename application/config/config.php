@@ -14,7 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/~mht/dbms-library/';
+$config['base_url']	= 'http://140.117.169.131/~mht/dbms-library/';
 
 /*
 |--------------------------------------------------------------------------

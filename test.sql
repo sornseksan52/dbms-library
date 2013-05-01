@@ -17,6 +17,11 @@ Create TABLE books(
     class varchar(60) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     PRIMARY KEY(number)
 );
+Create TABLE guestbooks(
+    name varchar(20) not null,
+    message_date timestamp not null,
+    content varchar(100) not null
+);
 insert into books values('徹底研究PHP','Larry Edward','505513','unavailable',2011,'php');
 insert into books values('PHP for the Web2','Amy Edward','505523','available',2011,'php');
 insert into books values('王者歸來 : PHP完全開發範例集','潘凱華','507658','在架上',2011,'php');
