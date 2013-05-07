@@ -111,7 +111,8 @@ Class User extends CI_Model
                 $record = array(
                     'username'=> $username,
                     'bookname'=> $bookname[0]->bookname,
-                    'number'=> $number
+                    'number'=> $number,
+                    'borrow_date' => date("F j, Y, g:i a")
                 );
                 $this->db->insert('user_borrowed',$record);
                 //update books state

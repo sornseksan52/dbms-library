@@ -82,6 +82,7 @@
                 <th>書刊名</th>
                 <th>系統書號</th>
                 <th>作者名稱</th>
+                <th>借閱日期</th>
             </tr>
 
             <?php
@@ -90,7 +91,8 @@
                 echo '<tr><td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
                 echo '<td>'.$row->bookname.'</td>';
                 echo '<td>'.$row->number.'</td>';
-                echo '<td>'.$row->author.'</td></tr>';
+                echo '<td>'.$row->author.'</td>';
+                echo '<td>'.$row->borrow_date.'</td></tr>';
                 }
             }
             ?>

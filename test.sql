@@ -34,6 +34,7 @@ create table user_borrowed(
     username VARCHAR(60) NOT NULL,
     bookname varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     number varchar(60) NOT NULL,
+    borrow_date varchar(60) NOT NULL,
     FOREIGN KEY(username) REFERENCES users(username),
     FOREIGN KEY(number) REFERENCES books(number),
     PRIMARY KEY(number)
