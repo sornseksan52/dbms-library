@@ -57,6 +57,7 @@
         <input name = 'passconf' type="password" class="input-block-level" placeholder="Password Confirm">
         <button class="btn btn-large btn-primary" type="submit">註冊</button>
         <?php echo validation_errors(); ?>
+        <button class="btn btn-large btn-info" type = 'button'><?= anchor('/login', '回首頁'); ?></button>
       </form>
 
     </div> <!-- /container -->

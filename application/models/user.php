@@ -1,10 +1,10 @@
 <?php
 Class User extends CI_Model
 {
-    function login($username, $passwd)
+    function login($username, $passwd,$table)
     {
         $this -> db -> select('username, passwd');
-        $this -> db -> from('users');
+        $this -> db -> from($table);
         $this -> db -> where('username', $username);
         $this -> db -> where('passwd', MD5($passwd));
         $this -> db -> limit(1);
@@ -22,9 +22,9 @@ Class User extends CI_Model
     }
 
     function register($username){
-        $this -> db -> select('username');
-        $this -> db -> from('users');
-        $this -> db -> where('username', $username);
+        $this -> db -> select('users.username,managers.username');
+        $this -> db -> from('users,managers');
+        $this -> db -> where("users.username = '$username' or managers.username = '$username'");
         $this -> db -> limit(1);
 
         $query = $this -> db -> get();

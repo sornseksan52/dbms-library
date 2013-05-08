@@ -40,7 +40,7 @@
                 <li><?= anchor('/home/listbooks', '個人書櫃'); ?></li>
                 </ul>
               </li>
-                        <?php if($username == 'mht'){
+                        <?php if($manager == True){
                          echo '<li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown">管理書籍<b class="caret"></b></a>
                             <ul class="dropdown-menu">

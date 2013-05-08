@@ -16,6 +16,7 @@ class Home extends CI_Controller {
         {
             $session_data = $this->session->userdata('logged_in');
             $data['username'] = $session_data['username'];
+            $data['manager'] = $session_data['manager'];
             $this->load->view('authorization_view', $data);
         }
         else
@@ -28,7 +29,9 @@ class Home extends CI_Controller {
     function Listbooks(){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
+        $manager = $session_data['manager'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $data['query'] = $this->user->Listbooks($username);
         $this->load->view('books_view',$data);
     }
@@ -36,7 +39,9 @@ class Home extends CI_Controller {
     function searchBooks(){
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
+        $manager = $session_data['manager'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $data['query'] = $this->user->queryBooks('','');
         $borrowed_result = $this->user->Listbooks($username);
         $i = 0;
@@ -55,6 +60,7 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $booknumbers = $this->input->post('borrow_books');
         $this->user->returnBooks($booknumbers);
         $this->Listbooks();
@@ -65,6 +71,7 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $post = $this->input->post();
         $data['query'] = $this->user->queryBooks($post['criteria'],$post['search']);
         if($delete ==  'delete'){
@@ -94,6 +101,7 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $booknumbers = $this->input->post('borrow_books');
         $this->user->borrowBooks($username,$booknumbers);
         //$this->load->view('test',$data);
@@ -104,6 +112,7 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         if($action == 'add'){
             $this->load->view('add_books',$data);
         }
@@ -120,6 +129,7 @@ class Home extends CI_Controller {
         $session_data = $this->session->userdata('logged_in');
         $username = $session_data['username'];
         $data['username'] = $username;
+        $data['manager'] = $session_data['manager'];
         $update = False;
         if($action == 'message'){
             $content = $this->input->post('message');
