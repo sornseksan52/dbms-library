@@ -89,7 +89,7 @@
         if(is_array($query)){
             foreach($query as $row){
                 echo '<tr>';
-                echo '<td><input type="radio" name=update_book value ='. "'$row->number'" .'/></td>';
+                echo '<td><input type="radio" name=update_book value ='. "'$row->number'" .' checked = True/></td>';
                 echo '<td>'.$row->bookname.'</td>';
                 echo '<td>'.$row->author.'</td>';
                 echo '<td>'.$row->publish.'</td>';

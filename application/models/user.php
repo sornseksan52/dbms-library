@@ -213,10 +213,12 @@ Class User extends CI_Model
         $record = array();
         if($bookname != ''){ $record['bookname'] = $bookname; }
         if($author != ''){ $record['author'] = $bookname; }
-        if($author != ''){ $record['publish'] = $publish; }
-        if($author != ''){ $record['class'] = $class; }
-        $this->db->where('number',$number);
-        $this->db->update('books',$record);
+        if($publish != ''){ $record['publish'] = $publish; }
+        if($class != ''){ $record['class'] = $class; }
+        if($record){
+            $this->db->where('number',$number);
+            $this->db->update('books',$record);
+        }
 
     }
 }
