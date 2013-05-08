@@ -6,8 +6,18 @@ Create TABLE users(
     passwd VARCHAR(60) NOT NULL,
     PRIMARY KEY(username)
 );
+Create TABLE managers(
+    username VARCHAR(60) NOT NULL,
+    email_addr VARCHAR(60) NOT NULL,
+    passwd VARCHAR(60) NOT NULL,
+    PRIMARY KEY(username),
+    FOREIGN KEY(username) REFERENCES users(username)
+);
 drop table users;
+drop table managers;
 insert into users values ('mht','qrnnis2623891@gmail.com',md5('mht5566'));
+insert into managers values ('mht','qrnnis2623891@gmail.com',md5('mht5566'));
+delete from users where username = 'mht';
 Create TABLE books(
     bookname varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     author varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -35,8 +45,8 @@ create table user_borrowed(
     bookname varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     number varchar(60) NOT NULL,
     borrow_date varchar(60) NOT NULL,
-    FOREIGN KEY(username) REFERENCES users(username),
     FOREIGN KEY(number) REFERENCES books(number),
+    FOREIGN KEY(username) REFERENCES users(username),
     PRIMARY KEY(number)
 );
 drop table user_borrowed;
