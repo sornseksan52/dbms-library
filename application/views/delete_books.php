@@ -88,8 +88,13 @@
 <?php
             if(is_array($query)){
                 foreach($query as $row){
-                    echo '<tr>';
+                    if(!in_array($row->number,$nonava)){
+                        echo '<tr class = "warning">';
                     echo '<td><input type="checkbox" name=delete_books[] value ='. "'$row->number'" .'/></td>';
+                    }else{
+                        echo '<tr class = "success">';
+                        echo '<td>借出中</td>';
+                    }
                     echo '<td>'.$row->bookname.'</td>';
                     echo '<td>'.$row->author.'</td>';
                     echo '<td>'.$row->state.'</td>';

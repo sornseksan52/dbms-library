@@ -96,7 +96,7 @@
         if(is_array($query)){
         foreach($query as $row){
         if(!in_array($row->number,$borrowed)){
-            echo '<tr class = "warning">';
+            echo '<tr>';
             echo '<td><input type="checkbox" name=borrow_books[] value ='. "'$row->number'" .'/></td>';
         }else{
             echo '<tr class = "success">';

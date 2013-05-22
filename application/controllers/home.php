@@ -75,6 +75,16 @@ class Home extends CI_Controller {
         $post = $this->input->post();
         $data['query'] = $this->user->queryBooks($post['criteria'],$post['search']);
         if($delete ==  'delete'){
+            $i = 0;
+            $borrowed_number = array();
+            $borrowed_result = $this->user->NonAvailableBooks();
+            if(is_array($borrowed_result)){
+                foreach($borrowed_result as $row){
+                    $borrowed_number[$i] = $row->number;
+                    $i++;
+                }
+            }
+            $data['nonava'] = $borrowed_number;
             $this->load->view('delete_books',$data);
         }
         elseif($delete == 'update'){
@@ -121,6 +131,16 @@ class Home extends CI_Controller {
             $this->load->view('update_books',$data);
         }elseif($action == 'delete'){
             $data['query'] = $this->user->queryBooks('','');
+            $i = 0;
+            $borrowed_number = array();
+            $borrowed_result = $this->user->NonAvailableBooks();
+            if(is_array($borrowed_result)){
+                foreach($borrowed_result as $row){
+                    $borrowed_number[$i] = $row->number;
+                    $i++;
+                }
+            }
+            $data['nonava'] = $borrowed_number;
             $this->load->view('delete_books',$data);
         }
     }

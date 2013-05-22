@@ -21,6 +21,21 @@ Class User extends CI_Model
         }
     }
 
+    function NonAvailableBooks(){
+        $this->db->select('number');
+        $this->db->from('user_borrowed');
+        $query = $this -> db -> get();
+
+        if($query -> num_rows()>0)
+        {
+            return $query->result();
+        }
+        else
+        {
+            return false;
+        }
+
+    }
     function register($username){
         $this -> db -> select('users.username,managers.username');
         $this -> db -> from('users,managers');
@@ -212,7 +227,7 @@ Class User extends CI_Model
         $class = $data['class'];
         $record = array();
         if($bookname != ''){ $record['bookname'] = $bookname; }
-        if($author != ''){ $record['author'] = $bookname; }
+        if($author != ''){ $record['author'] = $author; }
         if($publish != ''){ $record['publish'] = $publish; }
         if($class != ''){ $record['class'] = $class; }
         if($record){
