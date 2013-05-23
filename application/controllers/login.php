@@ -43,7 +43,7 @@ class Login extends CI_Controller {
             $data = $this->input->post();
             $this->user->adduser($data['username'],$data['password'],$data['email']);
 
-            $this->session->set_userdata('logged_in',array('username' =>$data['username']));
+            $this->session->set_userdata('logged_in',array('username' =>$data['username'],'manager' =>False));
             redirect('home', 'refresh');
 		}
     }

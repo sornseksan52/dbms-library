@@ -17,7 +17,7 @@ drop table users;
 drop table managers;
 insert into users values ('mht','qrnnis2623891@gmail.com',md5('mht5566'));
 insert into managers values ('mht','qrnnis2623891@gmail.com',md5('mht5566'));
-delete from users where username = 'mht';
+delete from users where username = 'hugo';
 Create TABLE books(
     bookname varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
     author varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
